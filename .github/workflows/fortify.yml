@@ -79,6 +79,7 @@ jobs:
       - name: Perform SAST Scan
         run: 
           Write-Output ${env.FOD_UPLOAD_JAR}
+          
           java -jar ${env.FOD_UPLOAD_JAR} -z package.zip -aurl ${{secrets.FOD_API_URL}} -purl ${{secrets.FOD_URL}} -rid "${{secrets.FOD_RELEASE_ID}}" -tc "${{secrets.FOD_TENANT}}" -uc "${{secrets.FOD_USER}}" "${{secrets.FOD_PAT}}" -ep 2 -pp 0 -I 1 -apf -n "${env.FOD_UPLOADER_NOTES}"
         env:
           FOD_URL: ${{ secrets.FOD_URL }}
