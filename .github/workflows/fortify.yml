@@ -41,6 +41,9 @@ jobs:
       - name: Check Out Source Code
         uses: actions/checkout@v3
 
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+
       # Java is required to run the various Fortify utilities.
       # When scanning a Java application, please use the appropriate Java version for building your application.
       - name: Setup Java
@@ -64,7 +67,7 @@ jobs:
       - name: Package Code + Dependencies
         run: scancentral package $PACKAGE_OPTS -o package.zip
         env:
-          PACKAGE_OPTS: "-bt msbuild -bf IWA.NET.sln"
+          PACKAGE_OPTS: "-bt msbuild -bf IWA.NET.sln -exclude /InsecureWebAppTests"
 
       # Start Fortify on Demand SAST scan and wait until results complete. For more information on FoDUploader commands, see https://github.com/fod-dev/fod-uploader-java
       # TODO: Update ENV variables for your application and create the necessary GitHub Secrets.  Helpful hints:
