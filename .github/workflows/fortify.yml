@@ -73,7 +73,7 @@ jobs:
           version: 23.1.0
 
       - name: Package Code + Dependencies
-        run: scancentral package -bt msbuild -bf IWA.NET.sln -exclude D:\a\IWADotNETExclude-v1.1\IWADotNETExclude-v1.1\InsecureWebAppTests -o package.zip
+        run: scancentral package -bt msbuild -bf IWA.NET.sln -exclude /InsecureWebAppTests -o package.zip
 
       - name: Write D:\a\IWADotNETExclude-v1.1\IWADotNETExclude-v1.1 contents
         run: 
