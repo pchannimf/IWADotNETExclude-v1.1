@@ -77,9 +77,9 @@ jobs:
         env:
           PACKAGE_OPTS: "-bt msbuild -bf IWA.NET.sln -exclude 'D:/a/IWADotNETExclude-v1.1/IWADotNETExclude-v1.1/InsecureWebAppTests'"
 
-      - name: Write D:\_actions contents
+      - name: Write D:\a\IWADotNETExclude-v1.1\IWADotNETExclude-v1.1 contents
         run: 
-          Get-ChildItem -Path D:\a\_actions
+          Get-ChildItem -Path D:\a\IWADotNETExclude-v1.1\IWADotNETExclude-v1.1
 
       - name: Write D:\a\_temp
         run: 
