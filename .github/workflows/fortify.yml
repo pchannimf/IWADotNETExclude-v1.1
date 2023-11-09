@@ -72,10 +72,6 @@ jobs:
         with:
           version: 23.1.0
 
-      - name: Write CI_Project_DIR Path
-        run: 
-          Get-ChildItem -Path D:\a
-        
       - name: Package Code + Dependencies
         run: scancentral package $PACKAGE_OPTS -o package.zip
         env:
@@ -83,7 +79,11 @@ jobs:
 
       - name: Write D:\_actions contents
         run: 
-          Get-ChildItem -Path D:\_actions
+          Get-ChildItem -Path D:\a\_actions
+
+      - name: Write D:\a\_temp
+        run: 
+          Get-ChildItem -Path D:\a\_temp
           
       # Start Fortify on Demand SAST scan and wait until results complete. For more information on FoDUploader commands, see https://github.com/fod-dev/fod-uploader-java
       # TODO: Update ENV variables for your application and create the necessary GitHub Secrets.  Helpful hints:
@@ -115,7 +115,7 @@ jobs:
       #    fod_release_id: ${{ secrets.FOD_RELEASE_ID }}
 
       # Import Fortify on Demand results to GitHub Security Code Scanning
-      - name: Import Results
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: ./gh-fortify-sast.sarif
+      #- name: Import Results
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: ./gh-fortify-sast.sarif
