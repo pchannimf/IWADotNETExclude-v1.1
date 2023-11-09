@@ -73,7 +73,7 @@ jobs:
           version: 23.1.0
 
       - name: Write CI_Project_DIR Path
-        run: write-output $env:CI_PROJECT_DIR
+        run: write-output ${env:CI_PROJECT_DIR}
         
       - name: Package Code + Dependencies
         run: scancentral package $PACKAGE_OPTS -o package.zip
