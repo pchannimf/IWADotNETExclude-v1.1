@@ -71,12 +71,12 @@ jobs:
         uses: fortify/gha-setup-scancentral-client@v2
         with:
           version: 23.1.0
-          
+
+      - name: Write CI_Project_DIR Path
+        run: Write-Output ${env:CI_PROJECT_DIR}
+        
       - name: Package Code + Dependencies
-        run: 
-          Write-Output ${env:CI_PROJECT_DIR}
-          
-          scancentral package $PACKAGE_OPTS -o package.zip
+        run: scancentral package $PACKAGE_OPTS -o package.zip
         env:
           PACKAGE_OPTS: "-bt msbuild -bf IWA.NET.sln -exclude '${env:CI_PROJECT_DIR}/InsecureWebAppTests'"
 
