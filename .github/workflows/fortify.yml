@@ -74,7 +74,7 @@ jobs:
 
       - name: Write CI_Project_DIR Path
         run: 
-          write-output $CI_PROJECT_DIR
+          write-output "asdfsd"
         
       - name: Package Code + Dependencies
         run: scancentral package $PACKAGE_OPTS -o package.zip
