@@ -81,9 +81,11 @@ jobs:
         run: 
           Get-ChildItem -Path D:\a\IWADotNETExclude-v1.1\IWADotNETExclude-v1.1
 
-      - name: Write D:\a\_temp
+      - name: Unzip package.zip and list content
         run: 
-          Get-ChildItem -Path D:\a\_temp
+          Expand-Archive D:\a\IWADotNETExclude-v1.1\IWADotNETExclude-v1.1\package.zip  -DestinationPath D:\a\IWADotNETExclude-v1.1\IWADotNETExclude-v1.1\package
+
+          Get-ChildItem -Recurse -Path D:\a\IWADotNETExclude-v1.1\IWADotNETExclude-v1.1\package
           
       # Start Fortify on Demand SAST scan and wait until results complete. For more information on FoDUploader commands, see https://github.com/fod-dev/fod-uploader-java
       # TODO: Update ENV variables for your application and create the necessary GitHub Secrets.  Helpful hints:
