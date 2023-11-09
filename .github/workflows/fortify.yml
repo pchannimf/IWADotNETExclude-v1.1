@@ -75,7 +75,7 @@ jobs:
       - name: Package Code + Dependencies
         run: scancentral package $PACKAGE_OPTS -o package.zip
         env:
-          PACKAGE_OPTS: "-bt msbuild -bf IWA.NET.sln -exclude D://a//IWADotNETExclude-v1.1//IWADotNETExclude-v1.1//InsecureWebAppTests"
+          PACKAGE_OPTS: "-bt msbuild -bf IWA.NET.sln -exclude D:/a/IWADotNETExclude-v1.1/IWADotNETExclude-v1.1/InsecureWebAppTests"
 
       - name: Write D:\a\IWADotNETExclude-v1.1\IWADotNETExclude-v1.1 contents
         run: 
@@ -86,6 +86,9 @@ jobs:
           Expand-Archive D:\a\IWADotNETExclude-v1.1\IWADotNETExclude-v1.1\package.zip  -DestinationPath D:\a\IWADotNETExclude-v1.1\IWADotNETExclude-v1.1\package
 
           Get-ChildItem -Recurse -Path D:\a\IWADotNETExclude-v1.1\IWADotNETExclude-v1.1\package
+
+      - name: Print Scancentral log
+        run: Get-Content -Path C:\Users\runneradmin\AppData\Local\Fortify\scancentral-23.1.0\log\scancentral.log
           
       # Start Fortify on Demand SAST scan and wait until results complete. For more information on FoDUploader commands, see https://github.com/fod-dev/fod-uploader-java
       # TODO: Update ENV variables for your application and create the necessary GitHub Secrets.  Helpful hints:
