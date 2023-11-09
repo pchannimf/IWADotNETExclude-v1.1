@@ -60,7 +60,7 @@ jobs:
       #   For other build tools, add your build commands to download necessary dependencies and prepare according to Fortify on Demand Packaging documentation.
       #   ScanCentral Client documentation is located at https://www.microfocus.com/documentation/fortify-software-security-center/
       - name: Download Fortify ScanCentral Client
-        uses: fortify/gha-setup-scancentral-client@5b7382f8234fb9840958c49d5f32ae854115f9f3
+        uses: fortify/gha-setup-scancentral-client@v2
         with:
           version: 23.1.0
           
@@ -74,7 +74,7 @@ jobs:
       #   Credentials and release ID should be obtained from your FoD tenant (either Personal Access Token or API Key can be used).
       #   Automated Audit preference should be configured for the release's Static Scan Settings in the Fortify on Demand portal.
       - name: Download Fortify on Demand Universal CI Tool
-        uses: fortify/gha-setup-fod-uploader@6e6bb8a33cb476e240929fa8ebc739ff110e7433
+        uses: fortify/gha-setup-fod-uploader@v1
       - name: Perform SAST Scan
         run: java -jar ${env.FOD_UPLOAD_JAR} -z package.zip -aurl ${{secrets.FOD_API_URL}} -purl ${{secrets.FOD_URL}} -rid "${{secrets.FOD_RELEASE_ID}}" -tc "${{secrets.FOD_TENANT}}" -uc "${{secrets.FOD_USER}}" "${{secrets.FOD_PAT}}" -ep 2 -pp 0 -I 1 -apf -n "${env.FOD_UPLOADER_NOTES}"
         env:
